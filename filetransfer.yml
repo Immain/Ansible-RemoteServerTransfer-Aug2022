@@ -5,12 +5,12 @@
   tasks:
     - name: Transfer from Master to Remote
       copy:
-        src: /home/imain/Desktop/movies
-        dest: /home/panda/Desktop/movies
+        src: /master/path/to/file
+        dest: /remote/path/to/file
 
     - name: Detecting Files in Directory
       shell:
-        cmd: "ls -1tr /home/imain/Desktop/movies | head --lines=-0"
+        cmd: "ls -1tr /master/path/to/file | head --lines=-0"
       register: ls_cmd
       changed_when: ls_cmd.stdout_lines | length > 0
       delegate_to: localhost
@@ -18,9 +18,9 @@
     - name: Clearing Files in Directory
       when: ls_cmd.stdout_lines|length > 0
       file:
-        path: /home/imain/Desktop/movies/{{ item }}
+        path: /master/path/to/file/{{ item }}
         state: absent
       loop: "{{ ls_cmd.stdout_lines }}"
       loop_control:
-        label: "/home/imain/Desktop/movies/{{ item }}"
+        label: "/master/path/to/file/{{ item }}"
       delegate_to: localhost
