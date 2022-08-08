@@ -1,6 +1,6 @@
 [remote]
-192.168.1.176 ansible_connection=ssh ansible_user=panda ansible_ssh_pass=~!ImAn2013**()
+x.x.x.x ansible_connection=ssh ansible_user=user ansible_ssh_pass=userpass
 
 [master]
-192.168.1.44 ansible_connection=ssh ansible_user=imain ansible_ssh_pass=~!ImAn2013**()
+x.x.x.x ansible_connection=ssh ansible_user=user ansible_ssh_pass=userpass
 
